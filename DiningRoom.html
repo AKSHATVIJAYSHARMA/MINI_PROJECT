@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dining Room</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #chart-container-tap {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Dining Room</h2>
+
+    <div id="chart-container-tap">
+        <div class="card">
+            <h3>Tap 1</h3>
+            <canvas id="flowChartTap1"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for Tap 1
+        const flowDataTap1 = {
+            labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
+            datasets: [{
+                label: 'Rate of Flow',
+                data: [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 95, 90, 85, 80, 75, 70, 65], // Sample data points
+                fill: false,
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1
+            }]
+        };
+
+        // Configuration options
+        const chartConfigTap1 = {
+            type: 'line',
+            data: flowDataTap1,
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Hour of the Day'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Rate of Flow (m³/s)'
+                        }
+                    }
+                }
+            }
+        };
+
+        // Create the chart for Tap 1
+        var myChartTap1 = new Chart(
+            document.getElementById('flowChartTap1'),
+            chartConfigTap1
+        );
+
+    </script>
+</body>
+</html>
